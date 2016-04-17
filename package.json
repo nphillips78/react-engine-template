@@ -1,10 +1,20 @@
 {
   "name": "react-engine-template",
   "version": "0.0.0",
+  "description": "A template for react-engine.",
+  "author": "Mark <mark@remarkablemark.org>",
   "private": true,
   "scripts": {
     "start": "node ./bin/www"
   },
+  "keywords": [
+    "react-engine",
+    "express",
+    "react-router",
+    "react",
+    "universal javascript",
+    "isomorphic javascript"
+  ],
   "dependencies": {
     "body-parser": "~1.13.2",
     "cookie-parser": "~1.3.5",
@@ -13,5 +23,6 @@
     "jade": "~1.11.0",
     "morgan": "~1.6.1",
     "serve-favicon": "~2.3.0"
-  }
+  },
+  "license": "MIT"
 }
