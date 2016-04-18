@@ -16,10 +16,11 @@ module.exports = React.createClass({
                 <head>
                     <meta charSet='utf-8' />
                     <title>{this.props.title}</title>
-                    <link rel='stylesheet' href='/stylesheets/style.css' />
+                    <link rel='stylesheet' href='/css/style.css' />
                 </head>
                 <body>
                     {this.props.children}
+                    <script src='/js/script.js' />
                 </body>
             </html>
         );
