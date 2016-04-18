@@ -5,8 +5,8 @@
   "author": "Mark <mark@remarkablemark.org>",
   "private": true,
   "scripts": {
-    "start": "webpack -w & nodemon bin/www",
-    "production": "NODE_ENV=production && webpack -p && node bin/www"
+    "start": "webpack -w --config webpack/development.config.js & nodemon bin/www",
+    "production": "NODE_ENV=production && webpack --config webpack/production.config.js && node bin/www"
   },
   "keywords": [
     "react-engine",

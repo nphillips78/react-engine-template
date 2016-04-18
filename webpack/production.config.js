@@ -4,6 +4,7 @@
  * Module dependencies.
  */
 var path = require('path');
+var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 /**
@@ -11,18 +12,16 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
  * https://github.com/webpack/docs/wiki/configuration
  */
 module.exports = {
-    context: path.join(__dirname, 'src'),
+    context: path.join(__dirname, '../src'),
 
     entry: './js/script.js',
 
     output: {
-        path: path.join(__dirname, 'public'),
+        path: path.join(__dirname, '../public'),
         filename: 'js/script.js'
     },
 
-    debug: true,
-
-    devtool: 'inline-source-map', // or "source-map"
+    debug: false,
 
     module: {
         loaders: [
@@ -54,6 +53,20 @@ module.exports = {
     plugins: [
         new ExtractTextPlugin('css/style.css', {
             allChunks: true
+        }),
+
+        new webpack.optimize.DedupePlugin(),
+
+        new webpack.optimize.AggressiveMergingPlugin(),
+
+        new webpack.optimize.UglifyJsPlugin({
+            sourceMap: false,
+            output: {
+                comments: false
+            },
+            compress: {
+                warnings: false
+            }
         })
     ]
 };
