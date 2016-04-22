@@ -5,6 +5,7 @@
  */
 var React = require('react');
 var Layout = require('./Layout');
+var Counter = require('./Counter');
 
 /**
  * Index component.
@@ -16,6 +17,7 @@ module.exports = React.createClass({
             <Layout title={this.props.title}>
                 <h1>{this.props.title}</h1>
                 <p>Welcome to {this.props.title}</p>
+                <Counter />
             </Layout>
         );
     }
