@@ -16,7 +16,9 @@ var app = express();
 // make `.jsx` file requireable by node
 require('node-jsx').install({ extension: '.jsx' });
 
-// view engine setup
+/**
+ * View engine setup.
+ */
 var engine = ReactEngine.server.create();
 app.engine('.jsx', engine);
 
@@ -24,8 +26,11 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jsx');
 app.set('view', ReactEngine.expressView);
 
+/**
+ * Middleware.
+ */
 // uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+//app.use(favicon(path.join(__dirname, 'public/favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -52,10 +57,13 @@ app.use(function(req, res, next) {
 if (app.get('env') === 'development') {
     app.use(function(err, req, res, next) {
         res.status(err.status || 500);
-        res.render('Error', {
+        res.render('Error.jsx', {
             title: err.title || 'Error',
             message: err.message,
-            error: err
+            error: {
+                status: err.status,
+                stack: err.stack
+            }
         });
     });
 }
@@ -63,7 +71,7 @@ if (app.get('env') === 'development') {
 // production error handler will not leak stacktrace
 app.use(function(err, req, res, next) {
     res.status(err.status || 500);
-    res.render('Error', {
+    res.render('Error.jsx', {
         title: err.title || 'Error',
         message: err.message,
         error: {}
