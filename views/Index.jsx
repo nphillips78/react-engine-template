@@ -13,7 +13,7 @@ module.exports = React.createClass({
     displayName: 'Index',
     render: function() {
         return (
-            <Layout>
+            <Layout title={this.props.title}>
                 <h1>{this.props.title}</h1>
                 <p>Welcome to {this.props.title}</p>
             </Layout>
