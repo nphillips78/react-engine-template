@@ -67,7 +67,7 @@ module.exports = {
     ],
 
     devServer: {
-        quiet: false, // verbose logging
+        quiet: true, // don't output anything to the console
         inline: true, // embed the WebpackDevServer runtime into the bundle
         port: PORT
     }

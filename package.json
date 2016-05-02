@@ -6,7 +6,7 @@
   "private": true,
   "scripts": {
     "start": "npm run hmr & nodemon bin/www",
-    "hmr": "webpack-dev-server --progress --hot --config webpack/development.config.js",
+    "hmr": "webpack-dev-server --hot --config webpack/development.config.js",
     "production": "webpack --config webpack/production.config.js && NODE_ENV=production node bin/www"
   },
   "keywords": [
