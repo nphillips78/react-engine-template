@@ -8,7 +8,7 @@ var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 /**
- * Webpack configuration.
+ * Webpack production configuration.
  * https://github.com/webpack/docs/wiki/configuration
  */
 module.exports = {
@@ -30,7 +30,7 @@ module.exports = {
                 exclude: /(node_modules|bower_components)/,
                 loader: 'babel-loader',
                 query: {
-                    presets: ['react']
+                    presets: ['es2015', 'react']
                 }
             },
 
