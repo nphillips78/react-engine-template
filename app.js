@@ -12,6 +12,8 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var app = express();
+// `process.env.NODE_ENV`, default is "development"
+var isProduction = app.get('env') === 'production';
 
 // make `.jsx` file requireable by node
 require('node-jsx').install({ extension: '.jsx' });
@@ -37,6 +39,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// properties that are local variables within the application
+// http://expressjs.com/en/api.html#app.locals
+app.locals.isProduction = isProduction;
+
 /**
  * Routes.
  */
@@ -54,7 +60,7 @@ app.use(function(req, res, next) {
  * Error.
  */
 // development error handler will print stacktrace
-if (app.get('env') === 'development') {
+if (!isProduction) {
     app.use(function(err, req, res, next) {
         res.status(err.status || 500);
         res.render('Error.jsx', {
