@@ -5,9 +5,9 @@
   "author": "Mark <mark@remarkablemark.org>",
   "private": true,
   "scripts": {
-    "start": "npm run hmr & nodemon bin/www",
-    "hmr": "webpack-dev-server --hot --config webpack/development.config.js",
-    "production": "webpack --config webpack/production.config.js && NODE_ENV=production node bin/www"
+    "start": "webpack --config webpack/production.config.js && NODE_ENV=production node bin/www",
+    "dev": "npm run hmr & nodemon bin/www",
+    "hmr": "webpack-dev-server --hot --config webpack/development.config.js"
   },
   "keywords": [
     "react-engine",
