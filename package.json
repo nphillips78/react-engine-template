@@ -5,7 +5,8 @@
   "author": "Mark <mark@remarkablemark.org>",
   "private": true,
   "scripts": {
-    "start": "webpack -w --config webpack/development.config.js & nodemon bin/www",
+    "start": "npm run hmr & nodemon bin/www",
+    "hmr": "webpack-dev-server --progress --hot --config webpack/development.config.js",
     "production": "webpack --config webpack/production.config.js && NODE_ENV=production node bin/www"
   },
   "keywords": [
@@ -38,7 +39,9 @@
     "webpack": "^1.13.0"
   },
   "devDependencies": {
-    "nodemon": "^1.9.1"
+    "babel-preset-react-hmre": "^1.1.1",
+    "nodemon": "^1.9.1",
+    "webpack-dev-server": "^1.14.1"
   },
   "license": "MIT"
 }
