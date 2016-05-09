@@ -4,7 +4,6 @@
  * Module dependencies.
  */
 var React = require('react');
-var Layout = require('./Layout');
 var Counter = require('./Counter');
 
 /**
@@ -14,11 +13,11 @@ module.exports = React.createClass({
     displayName: 'Index',
     render: function() {
         return (
-            <Layout {...this.props}>
+            <div>
                 <h1>{this.props.title}</h1>
                 <p>Welcome to {this.props.title}</p>
                 <Counter />
-            </Layout>
+            </div>
         );
     }
 });

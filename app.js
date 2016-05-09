@@ -21,7 +21,11 @@ require('node-jsx').install({ extension: '.jsx' });
 /**
  * View engine setup.
  */
-var engine = ReactEngine.server.create();
+var routesFilePath = path.join(__dirname, 'routes/Routes');
+var engine = ReactEngine.server.create({
+    routes: require(routesFilePath),
+    routesFilePath: routesFilePath
+});
 app.engine('.jsx', engine);
 
 app.set('views', path.join(__dirname, 'views'));

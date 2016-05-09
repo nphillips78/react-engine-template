@@ -7,7 +7,10 @@ require('../css/style.css');
      * Client-side mounting.
      */
     document.addEventListener('DOMContentLoaded', function() {
-        require('react-engine/lib/client').boot({
+        var client = require('react-engine/lib/client');
+
+        client.boot({
+            routes: require('../../routes/Routes'),
             viewResolver: function(viewName) {
                 return require('../../views/' + viewName);
             }

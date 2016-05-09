@@ -10,7 +10,7 @@ var router = express.Router();
  * GET index page.
  */
 router.get('/', function(req, res, next) {
-    res.render('Index.jsx', { title: 'Express + React-Engine' });
+    res.render(req.path, { title: 'Express + React-Engine' });
 });
 
 /**
