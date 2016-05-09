@@ -52,40 +52,50 @@ app.locals.isProduction = isProduction;
  */
 app.use('/', require('./routes/index'));
 
-// catch 404 and forward to error handler
-app.use(function(req, res, next) {
-    var err = new Error('Not Found');
-    err.status = 404;
-    err.title = 'Not Found';
-    next(err);
-});
-
 /**
  * Error.
  */
-// development error handler will print stacktrace
-if (!isProduction) {
-    app.use(function(err, req, res, next) {
-        res.status(err.status || 500);
-        res.render('Error.jsx', {
-            title: err.title || 'Error',
-            message: err.message,
-            error: {
+app.use(function(err, req, res, next) {
+    // http://expressjs.com/en/guide/error-handling.html
+    if (res.headersSent) return next(err);
+
+    // production error handler will not leak stacktrace
+    var error = {};
+
+    // `react-router` error types
+    if (err._type) {
+        // redirect
+        if (err._type === ReactEngine.reactRouterServerErrors.MATCH_REDIRECT) {
+            return res.redirect(302, err.redirectLocation);
+
+        // match not found
+        } else if (err._type === ReactEngine.reactRouterServerErrors.MATCH_NOT_FOUND) {
+            error.message = 'Not Found';
+            err.status = 404;
+            res.status(404);
+
+        // internal server error
+        } else {
+            error.message = 'Internal Server Error';
+            err.status = 500;
+            res.status(500);
+        }
+
+        // development error handler will print stacktrace
+        if (!isProduction) {
+            error = {
+                message: err.message,
                 status: err.status,
                 stack: err.stack
-            }
-        });
-    });
-}
+            };
+        }
 
-// production error handler will not leak stacktrace
-app.use(function(err, req, res, next) {
-    res.status(err.status || 500);
-    res.render('Error.jsx', {
-        title: err.title || 'Error',
-        message: err.message,
-        error: {}
-    });
+        res.render('Error', {
+            title: err.title || 'Error',
+            message: error.message,
+            error: error
+        });
+    }
 });
 
 /**
