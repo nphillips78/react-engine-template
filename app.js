@@ -89,13 +89,13 @@ app.use(function(err, req, res, next) {
                 stack: err.stack
             };
         }
-
-        res.render('Error', {
-            title: err.title || 'Error',
-            message: error.message,
-            error: error
-        });
     }
+
+    res.render('Error', {
+        title: err.title || 'Error',
+        message: error.message,
+        error: error
+    });
 });
 
 /**
