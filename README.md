@@ -25,4 +25,4 @@ $ npm start
 
 ### License
 
-MIT
+[MIT](https://github.com/remarkablemark/react-engine-template/blob/master/LICENSE)
