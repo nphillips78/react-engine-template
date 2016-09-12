@@ -62,6 +62,7 @@ module.exports = {
     },
 
     plugins: [
+        new webpack.HotModuleReplacementPlugin(),
         new webpack.NoErrorsPlugin(),
         new ExtractTextPlugin('css/style.css', {
             allChunks: true
@@ -72,6 +73,7 @@ module.exports = {
     devServer: {
         quiet: true, // don't output anything to the console
         inline: true, // embed the WebpackDevServer runtime into the bundle
+        hot: true,
         host: HOST,
         port: PORT
     }
