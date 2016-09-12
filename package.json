@@ -5,8 +5,8 @@
   "author": "Mark <mark@remarkablemark.org>",
   "scripts": {
     "start": "webpack --config webpack/production.config.js && NODE_ENV=production node bin/www",
-    "dev": "npm run hmr & nodemon bin/www",
-    "hmr": "webpack-dev-server --hot --config webpack/development.config.js"
+    "dev": "npm run wds & nodemon bin/www",
+    "wds": "webpack-dev-server --config webpack/development.config.js"
   },
   "dependencies": {
     "babel-core": "^6.7.6",

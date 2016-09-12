@@ -15,7 +15,7 @@ $ npm install
 Development:
 ```sh
 $ npm run dev
-$ open http://localhost:3000 # run in a separate terminal tab/window
+$ open http://localhost:8080 # run in a separate terminal tab/window
 ```
 
 Production:
