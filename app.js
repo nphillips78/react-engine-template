@@ -13,10 +13,7 @@ var bodyParser = require('body-parser');
 
 var app = express();
 // `process.env.NODE_ENV`, default is "development"
-var isProduction = app.get('env') === 'production';
-
-// make `.jsx` file requireable by node
-require('node-jsx').install({ extension: '.jsx' });
+var isProduction = process.env.NODE_ENV === 'production';
 
 /**
  * View engine setup.
