@@ -46,6 +46,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 // properties that are local variables within the application
 // http://expressjs.com/en/api.html#app.locals
 app.locals.isProduction = isProduction;
+if (!isProduction) {
+    app.locals.publicPath = require('./webpack/development.config').output.publicPath;
+}
 
 /**
  * Routes.
