@@ -5,6 +5,11 @@
 /**
  * Module dependencies.
  */
+// https://babeljs.io/docs/usage/require/
+require('babel-register')({
+    // http://babeljs.io/docs/plugins/#presets
+    presets: ['react']
+});
 var app = require('../app');
 var debug = require('debug')('react-engine-template:server');
 var http = require('http');
