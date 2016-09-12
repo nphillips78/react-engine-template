@@ -32,4 +32,4 @@ npm-debug.log
 *.swp
 
 # Compiled static assets (http://expressjs.com/en/starter/static-files.html)
-public
+build

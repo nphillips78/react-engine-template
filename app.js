@@ -6,9 +6,6 @@
 var express = require('express');
 var ReactEngine = require('react-engine');
 var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var app = express();
@@ -32,13 +29,13 @@ app.set('view', ReactEngine.expressView);
 /**
  * Middleware.
  */
-// uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public/favicon.ico')));
-app.use(logger('dev'));
+// uncomment after placing your favicon
+//app.use(require('serve-favicon)(path.join(__dirname, 'build/favicon.ico')));
+app.use(require('morgan')('dev')); // logger
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(require('cookie-parser')());
+app.use(express.static(path.join(__dirname, 'build')));
 
 // properties that are local variables within the application
 // http://expressjs.com/en/api.html#app.locals

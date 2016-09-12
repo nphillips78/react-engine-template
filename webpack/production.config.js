@@ -17,7 +17,7 @@ module.exports = {
     entry: './js/script.js',
 
     output: {
-        path: path.join(__dirname, '../public'),
+        path: path.join(__dirname, '../build'),
         filename: 'js/script.js'
     },
 
