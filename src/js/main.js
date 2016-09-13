@@ -8,6 +8,7 @@ require('../css/style.css');
         var config = JSON.parse(
             document.getElementById('data-config').getAttribute('data-config')
         );
+        var isProduction = config.isProduction;
         var versions = config.versions;
     } catch (error) {
         // console.log(error);
@@ -33,21 +34,33 @@ require('../css/style.css');
     /**
      * Mount on client-side.
      */
-    requirejs(['react', 'react-dom'], function(React, ReactDOM) {
-        window.React = React;
-        window.ReactDOM = ReactDOM;
+    function boot() {
+        var client = require('react-engine/lib/client');
+        client.boot({
+            routes: require('../../routes/Routes'),
+            viewResolver: function(viewName) {
+                return require('../../views/' + viewName);
+            }
+        });
+    }
 
-        requirejs(['react-router'], function(ReactRouter) {
-            window.ReactRouter = ReactRouter;
+    // load modules via Require.js on production
+    if (isProduction) {
+        requirejs(['react', 'react-dom'], function(React, ReactDOM) {
+            window.React = React;
+            window.ReactDOM = ReactDOM;
 
-            var client = require('react-engine/lib/client');
-            client.boot({
-                routes: require('../../routes/Routes'),
-                viewResolver: function(viewName) {
-                    return require('../../views/' + viewName);
-                }
+            requirejs(['react-router'], function(ReactRouter) {
+                window.ReactRouter = ReactRouter;
+                boot();
             });
         });
-    });
+
+    // load modules via WebpackDevServer on development
+    } else {
+        document.addEventListener('DOMContentLoaded', function() {
+            boot();
+        });
+    }
 
 })(window, document, window.requirejs, window.define);
