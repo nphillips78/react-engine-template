@@ -14,11 +14,16 @@ module.exports = React.createClass({
     getDefaultProps: function() {
         return {
             isProduction: true,
-            publicPath: ''
+            publicPath: '',
+            versions: {}
         };
     },
 
     render: function() {
+        var config = {
+            isProduction: true,
+            versions: this.props.versions
+        };
         return (
             <html>
                 <head>
@@ -28,6 +33,7 @@ module.exports = React.createClass({
                 </head>
                 <body>
                     {this.props.children}
+                    <div id='data-config' data-config={JSON.stringify(config)} />
                     <script src={this.props.publicPath + '/js/main.js'} />
                 </body>
             </html>
