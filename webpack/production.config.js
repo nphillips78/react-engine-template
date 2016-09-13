@@ -68,5 +68,11 @@ module.exports = {
                 warnings: false
             }
         })
-    ]
+    ],
+
+    externals: {
+        'react': 'React',
+        'react-dom': 'ReactDOM',
+        'react-router': 'ReactRouter'
+    }
 };
