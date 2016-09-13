@@ -7,6 +7,7 @@ var express = require('express');
 var ReactEngine = require('react-engine');
 var path = require('path');
 var bodyParser = require('body-parser');
+var dependencies = require('./package').dependencies;
 
 var app = express();
 // `process.env.NODE_ENV`, default is "development"
@@ -40,6 +41,13 @@ app.use(express.static(path.join(__dirname, 'build')));
 // properties that are local variables within the application
 // http://expressjs.com/en/api.html#app.locals
 app.locals.isProduction = isProduction;
+function cleanVersion(v) { return v.replace(/^\D/, ''); }
+app.locals.versions = {
+    'react': cleanVersion(dependencies['react']),
+    'react-dom': cleanVersion(dependencies['react-dom']),
+    'react-router': cleanVersion(dependencies['react-router'])
+};
+
 if (!isProduction) {
     app.locals.publicPath = require('./webpack/development.config').output.publicPath;
 }
