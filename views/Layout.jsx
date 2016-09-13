@@ -28,7 +28,7 @@ module.exports = React.createClass({
                 </head>
                 <body>
                     {this.props.children}
-                    <script src={this.props.publicPath + '/js/script.js'} />
+                    <script src={this.props.publicPath + '/js/main.js'} />
                 </body>
             </html>
         );

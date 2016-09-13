@@ -14,11 +14,11 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 module.exports = {
     context: path.join(__dirname, '../src'),
 
-    entry: './js/script.js',
+    entry: './js/main.js',
 
     output: {
         path: path.join(__dirname, '../build'),
-        filename: 'js/script.js'
+        filename: 'js/main.js'
     },
 
     debug: false,

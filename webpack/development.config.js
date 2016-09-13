@@ -18,15 +18,15 @@ module.exports = {
     context: path.join(__dirname, '../src'),
 
     entry: [
-        './js/script.js', // app entry point
+        './js/main.js', // app entry point
         'webpack/hot/only-dev-server', // "only" prevents reload on syntax errors
         'webpack-dev-server/client?' + URL // WebpackDevServer host and port
-        //path.join(__dirname, '../src/js/script.js')
+        //path.join(__dirname, '../src/js/main.js')
     ],
 
     output: {
         path: path.join(__dirname, '../build/'),
-        filename: './js/script.js',
+        filename: './js/main.js',
         publicPath: URL + '/build'
     },
 
