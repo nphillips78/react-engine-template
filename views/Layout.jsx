@@ -21,7 +21,7 @@ module.exports = React.createClass({
 
     render: function() {
         var config = {
-            isProduction: true,
+            isProduction: this.props.isProduction,
             versions: this.props.versions
         };
         return (
