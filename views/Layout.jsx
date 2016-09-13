@@ -14,11 +14,16 @@ module.exports = React.createClass({
     getDefaultProps: function() {
         return {
             isProduction: true,
-            publicPath: ''
+            publicPath: '',
+            versions: {}
         };
     },
 
     render: function() {
+        var config = {
+            isProduction: this.props.isProduction,
+            versions: this.props.versions
+        };
         return (
             <html>
                 <head>
@@ -28,6 +33,8 @@ module.exports = React.createClass({
                 </head>
                 <body>
                     {this.props.children}
+                    <div id='data-config' data-config={JSON.stringify(config)} />
+                    <script src='//cdnjs.cloudflare.com/ajax/libs/require.js/2.3.1/require.min.js' />
                     <script src={this.props.publicPath + '/js/main.js'} />
                 </body>
             </html>
