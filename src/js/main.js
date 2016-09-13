@@ -31,16 +31,22 @@ require('../css/style.css');
     });
 
     /**
-     * Client-side mounting.
+     * Mount on client-side.
      */
-    document.addEventListener('DOMContentLoaded', function() {
-        var client = require('react-engine/lib/client');
+    requirejs(['react', 'react-dom'], function(React, ReactDOM) {
+        window.React = React;
+        window.ReactDOM = ReactDOM;
 
-        client.boot({
-            routes: require('../../routes/Routes'),
-            viewResolver: function(viewName) {
-                return require('../../views/' + viewName);
-            }
+        requirejs(['react-router'], function(ReactRouter) {
+            window.ReactRouter = ReactRouter;
+
+            var client = require('react-engine/lib/client');
+            client.boot({
+                routes: require('../../routes/Routes'),
+                viewResolver: function(viewName) {
+                    return require('../../views/' + viewName);
+                }
+            });
         });
     });
 
