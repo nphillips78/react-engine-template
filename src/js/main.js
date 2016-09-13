@@ -1,6 +1,6 @@
 require('../css/style.css');
 
-(function(window, document){
+(function(window, document, requirejs, define){
     'use strict';
 
     // config
@@ -12,6 +12,23 @@ require('../css/style.css');
     } catch (error) {
         // console.log(error);
     }
+
+    /**
+     * Require.js config.
+     */
+    requirejs.config({
+        paths: {
+            'react': [
+                '//cdnjs.cloudflare.com/ajax/libs/react/' + versions['react'] + '/react.min'
+            ],
+            'react-dom': [
+                '//cdnjs.cloudflare.com/ajax/libs/react/' + versions['react-dom'] + '/react-dom.min'
+            ],
+            'react-router': [
+                '//cdnjs.cloudflare.com/ajax/libs/react-router/' + versions['react-router'] + '/ReactRouter.min'
+            ]
+        }
+    });
 
     /**
      * Client-side mounting.
@@ -26,4 +43,5 @@ require('../css/style.css');
             }
         });
     });
-})(window, document);
+
+})(window, document, window.requirejs, window.define);
