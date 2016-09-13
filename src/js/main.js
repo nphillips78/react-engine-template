@@ -20,10 +20,12 @@ require('../css/style.css');
     requirejs.config({
         paths: {
             'react': [
-                '//cdnjs.cloudflare.com/ajax/libs/react/' + versions['react'] + '/react.min'
+                '//cdnjs.cloudflare.com/ajax/libs/react/' + versions['react'] + '/react.min',
+                '//cdn.jsdelivr.net/react/' + versions['react'] + '/react.min'
             ],
             'react-dom': [
-                '//cdnjs.cloudflare.com/ajax/libs/react/' + versions['react-dom'] + '/react-dom.min'
+                '//cdnjs.cloudflare.com/ajax/libs/react/' + versions['react-dom'] + '/react-dom.min',
+                '//cdn.jsdelivr.net/react/' + versions['react-dom'] + '/react-dom.min'
             ],
             'react-router': [
                 '//cdnjs.cloudflare.com/ajax/libs/react-router/' + versions['react-router'] + '/ReactRouter.min'
