@@ -21,14 +21,17 @@ require('../css/style.css');
         paths: {
             'react': [
                 '//cdnjs.cloudflare.com/ajax/libs/react/' + versions['react'] + '/react.min',
-                '//cdn.jsdelivr.net/react/' + versions['react'] + '/react.min'
+                '//cdn.jsdelivr.net/react/' + versions['react'] + '/react.min',
+                '//unpkg.com/react@' + versions['react'] + '/dist/react.min'
             ],
             'react-dom': [
                 '//cdnjs.cloudflare.com/ajax/libs/react/' + versions['react-dom'] + '/react-dom.min',
-                '//cdn.jsdelivr.net/react/' + versions['react-dom'] + '/react-dom.min'
+                '//cdn.jsdelivr.net/react/' + versions['react-dom'] + '/react-dom.min',
+                '//unpkg.com/react-dom@' + versions['react-dom'] + '/dist/react-dom.min'
             ],
             'react-router': [
-                '//cdnjs.cloudflare.com/ajax/libs/react-router/' + versions['react-router'] + '/ReactRouter.min'
+                '//cdnjs.cloudflare.com/ajax/libs/react-router/' + versions['react-router'] + '/ReactRouter.min',
+                '//unpkg.com/react-router@' + versions['react-router'] + '/umd/ReactRouter.min'
             ]
         }
     });
