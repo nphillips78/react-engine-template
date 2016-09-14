@@ -4,7 +4,10 @@
   "description": "A template for react-engine.",
   "author": "Mark <mark@remarkablemark.org>",
   "scripts": {
-    "start": "webpack --config webpack/production.config.js && NODE_ENV=production node bin/www",
+    "start": "npm run clean && npm run build && NODE_ENV=production npm run server",
+    "clean": "rm -rf build",
+    "build": "webpack --config webpack/production.config.js",
+    "server": "node bin/www",
     "dev": "npm run wds & nodemon bin/www",
     "wds": "webpack-dev-server --config webpack/development.config.js"
   },
