@@ -1,26 +1,29 @@
 # react-engine-template
 
-A template for [react-engine](https://github.com/paypal/react-engine).
+A template for [react-engine](https://github.com/paypal/react-engine) and [react-router](https://github.com/reactjs/react-router).
 
-### Install
+## Installation
 
 ```sh
 $ git clone https://github.com/remarkablemark/react-engine-template.git
 $ cd react-engine-template
-$ npm install
+$ npm install # also sets up Git hooks
 ```
 
-### Run
+## Usage
 
-Development:
+#### Development
+
 ```sh
 $ npm run dev
-$ open http://localhost:8080 # run in a separate terminal tab/window
+$ open http://localhost:8080 # run in a different tab or window
 ```
 
-Production:
+#### Production
+
 ```sh
 $ npm start
+$ open http://localhost:8080 # or replace with IP and PORT
 ```
 
 ### License
