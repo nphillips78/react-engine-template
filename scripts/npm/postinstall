@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# setup git hooks
+if [ "$NODE_ENV" != "production" ]; then
+    echo "Operating System: $OSTYPE"
+
+    # symlink
+    if command -v ln > /dev/null 2>&1; then
+        echo "Symlinking Git hooks..."
+        for file in scripts/git/hooks/*; do
+            ln -sfv ../../$file .git/hooks
+        done
+
+    # copy
+    else
+        echo "Copying Git hooks..."
+        for file in scripts/git/hooks/*; do
+            cp -v $file .git/hooks 2>/dev/null || :
+        done
+    fi
+
+    echo "Git hooks installed."
+fi

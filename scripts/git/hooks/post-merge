@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# only run hook in development
+if [ "$NODE_ENV" != "production" ]; then
+    npm install
+    npm prune
+fi
