@@ -34,6 +34,11 @@ require('../css/style.css');
                     '//cdnjs.cloudflare.com/ajax/libs/react-router/' + versions['react-router'] + '/ReactRouter.min',
                     '//unpkg.com/react-router@' + versions['react-router'] + '/umd/ReactRouter.min'
                 ]
+            },
+            shim: {
+                'react-router': {
+                    deps: ['react']
+                }
             }
         });
     }
@@ -53,15 +58,15 @@ require('../css/style.css');
 
     // load modules via Require.js on production
     if (isProduction) {
-        requirejs(['react', 'react-dom'], function(React, ReactDOM) {
-            window.React = React;
-            window.ReactDOM = ReactDOM;
-
-            requirejs(['react-router'], function(ReactRouter) {
+        requirejs(
+            ['react', 'react-dom', 'react-router'],
+            function(React, ReactDOM, ReactRouter) {
+                window.React = React;
+                window.ReactDOM = ReactDOM;
                 window.ReactRouter = ReactRouter;
                 boot();
-            });
-        });
+            }
+        );
 
     // load modules via WebpackDevServer on development
     } else {
