@@ -5,6 +5,7 @@
   "author": "Mark <mark@remarkablemark.org>",
   "scripts": {
     "start": "scripts/npm/start",
+    "postinstall": "scripts/npm/postinstall",
     "clean": "rm -rf build",
     "build": "webpack --config webpack/production.config.js",
     "server": "node bin/www",
