@@ -55,10 +55,10 @@ module.exports = {
             allChunks: true
         }),
 
+        // https://github.com/webpack/docs/wiki/optimization
+        new webpack.optimize.OccurrenceOrderPlugin(),
         new webpack.optimize.DedupePlugin(),
-
         new webpack.optimize.AggressiveMergingPlugin(),
-
         new webpack.optimize.UglifyJsPlugin({
             sourceMap: false,
             output: {
