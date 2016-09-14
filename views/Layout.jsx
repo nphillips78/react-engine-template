@@ -34,7 +34,7 @@ module.exports = React.createClass({
                 <body>
                     {this.props.children}
                     <div id='data-config' data-config={JSON.stringify(config)} />
-                    <script src='//cdnjs.cloudflare.com/ajax/libs/require.js/2.3.1/require.min.js' />
+                    {config.isProduction && <script src='//cdnjs.cloudflare.com/ajax/libs/require.js/2.3.1/require.min.js' />}
                     <script src={this.props.publicPath + '/js/main.js'} />
                 </body>
             </html>

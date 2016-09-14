@@ -55,10 +55,10 @@ module.exports = {
             allChunks: true
         }),
 
+        // https://github.com/webpack/docs/wiki/optimization
+        new webpack.optimize.OccurrenceOrderPlugin(),
         new webpack.optimize.DedupePlugin(),
-
         new webpack.optimize.AggressiveMergingPlugin(),
-
         new webpack.optimize.UglifyJsPlugin({
             sourceMap: false,
             output: {
@@ -73,6 +73,7 @@ module.exports = {
     externals: {
         'react': 'React',
         'react-dom': 'ReactDOM',
-        'react-router': 'ReactRouter'
+        'react-router': 'ReactRouter',
+        'history': true
     }
 };
