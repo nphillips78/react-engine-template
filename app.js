@@ -47,6 +47,7 @@ app.locals.versions = {
     'react-dom': cleanVersion(dependencies['react-dom']),
     'react-router': cleanVersion(dependencies['react-router'])
 };
+app.locals.cachebust = Date.now().toString(36);
 
 if (!isProduction) {
     app.locals.publicPath = require('./webpack/development.config').output.publicPath;
