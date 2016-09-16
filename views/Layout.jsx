@@ -15,6 +15,7 @@ module.exports = React.createClass({
         return {
             isProduction: true,
             publicPath: '',
+            cachebust: '',
             versions: {}
         };
     },
@@ -24,18 +25,25 @@ module.exports = React.createClass({
             isProduction: this.props.isProduction,
             versions: this.props.versions
         };
+        var cachebust = (
+            this.props.isProduction ?
+            '?v=' + this.props.cachebust :
+            ''
+        );
         return (
             <html>
                 <head>
                     <meta charSet='utf-8' />
                     <title>{this.props.title}</title>
-                    <link rel='stylesheet' href={this.props.publicPath + '/css/style.css'} />
+                    <link rel='stylesheet'
+                          href={this.props.publicPath + '/css/style.css' + cachebust}
+                    />
                 </head>
                 <body>
                     {this.props.children}
                     <div id='data-config' data-config={JSON.stringify(config)} />
                     {config.isProduction && <script src='//cdnjs.cloudflare.com/ajax/libs/require.js/2.3.1/require.min.js' />}
-                    <script src={this.props.publicPath + '/js/main.js'} />
+                    <script src={this.props.publicPath + '/js/main.js' + cachebust} />
                 </body>
             </html>
         );
