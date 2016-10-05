@@ -1,5 +1,3 @@
-require('./css/style.css');
-
 (function(window, document, requirejs, define){
     'use strict';
 

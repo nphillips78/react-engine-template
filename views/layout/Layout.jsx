@@ -4,6 +4,9 @@
  * Module dependencies.
  */
 var React = require('react');
+if (typeof __webpack_require__ === 'function') {
+    require('./style.scss');
+}
 
 /**
  * Layout component.
