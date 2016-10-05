@@ -5,7 +5,6 @@
  */
 var webpack = require('webpack');
 var path = require('path');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 // constants
 var PORT = 8081;
@@ -50,7 +49,7 @@ module.exports = {
 
             {
                 test: /\.s?css$/,
-                loader: ExtractTextPlugin.extract('css-loader!sass-loader?sourceMap')
+                loaders: ['style-loader', 'css-loader', 'sass-loader']
             }
         ]
     },
@@ -62,10 +61,7 @@ module.exports = {
     plugins: [
         new webpack.optimize.OccurrenceOrderPlugin(),
         new webpack.HotModuleReplacementPlugin(),
-        new webpack.NoErrorsPlugin(),
-        new ExtractTextPlugin('css/style.css', {
-            allChunks: true
-        })
+        new webpack.NoErrorsPlugin()
     ],
 
     // https://webpack.github.io/docs/webpack-dev-server.html
