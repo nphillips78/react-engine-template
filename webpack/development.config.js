@@ -17,7 +17,7 @@ var URL = 'http://' + HOST + ':' + 8081;
  */
 module.exports = {
     entry: [
-        path.join(__dirname, '../src/js/main.js'), // app entry point
+        path.join(__dirname, '../src/main.js'), // app entry point
         'webpack/hot/only-dev-server', // "only" prevents reload on syntax errors
         'webpack-dev-server/client?' + URL // WebpackDevServer host and port
     ],

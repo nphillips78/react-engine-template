@@ -12,7 +12,7 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
  * https://github.com/webpack/docs/wiki/configuration
  */
 module.exports = {
-    entry: path.join(__dirname, '../src/js/main.js'),
+    entry: path.join(__dirname, '../src/main.js'),
 
     output: {
         path: path.join(__dirname, '../build'),

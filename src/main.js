@@ -1,4 +1,4 @@
-require('../css/style.css');
+require('./css/style.css');
 
 (function(window, document, requirejs, define){
     'use strict';
@@ -49,9 +49,9 @@ require('../css/style.css');
     function boot() {
         var client = require('react-engine/lib/client');
         client.boot({
-            routes: require('../../routes/Routes'),
+            routes: require('../routes/Routes'),
             viewResolver: function(viewName) {
-                return require('../../views/' + viewName);
+                return require('../views/' + viewName);
             }
         });
     }
