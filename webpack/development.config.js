@@ -5,8 +5,8 @@
  */
 var webpack = require('webpack');
 var path = require('path');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
+// constants
 var PORT = 8081;
 var HOST = process.env.IP || 'localhost';
 var URL = 'http://' + HOST + ':' + 8081;
@@ -15,18 +15,15 @@ var URL = 'http://' + HOST + ':' + 8081;
  * Webpack development configuration.
  */
 module.exports = {
-    context: path.join(__dirname, '../src'),
-
     entry: [
-        './js/main.js', // app entry point
+        path.join(__dirname, '../src/main.js'), // app entry point
         'webpack/hot/only-dev-server', // "only" prevents reload on syntax errors
         'webpack-dev-server/client?' + URL // WebpackDevServer host and port
-        //path.join(__dirname, '../src/js/main.js')
     ],
 
     output: {
         path: path.join(__dirname, '../build/'),
-        filename: './js/main.js',
+        filename: 'js/main.js',
         publicPath: URL + '/build'
     },
 
@@ -38,7 +35,7 @@ module.exports = {
         loaders: [
             {
                 test: /\.jsx?$/,
-                exclude: /(node_modules|bower_components)/,
+                exclude: /node_modules/,
                 loader: 'babel-loader',
                 query: {
                     presets: ['es2015', 'react', 'react-hmre']
@@ -51,8 +48,8 @@ module.exports = {
             },
 
             {
-                test: /\.css$/,
-                loader: ExtractTextPlugin.extract('css-loader?sourceMap')
+                test: /\.s?css$/,
+                loaders: ['style-loader', 'css-loader', 'sass-loader']
             }
         ]
     },
@@ -64,10 +61,7 @@ module.exports = {
     plugins: [
         new webpack.optimize.OccurrenceOrderPlugin(),
         new webpack.HotModuleReplacementPlugin(),
-        new webpack.NoErrorsPlugin(),
-        new ExtractTextPlugin('css/style.css', {
-            allChunks: true
-        })
+        new webpack.NoErrorsPlugin()
     ],
 
     // https://webpack.github.io/docs/webpack-dev-server.html

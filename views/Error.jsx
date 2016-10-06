@@ -4,7 +4,7 @@
  * Module dependencies.
  */
 var React = require('react');
-var Layout = require('./Layout');
+var Layout = require('./layout/Layout');
 
 /**
  * Error component.

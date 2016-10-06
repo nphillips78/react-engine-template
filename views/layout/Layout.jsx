@@ -4,6 +4,9 @@
  * Module dependencies.
  */
 var React = require('react');
+if (typeof __webpack_require__ === 'function') {
+    require('./style.scss');
+}
 
 /**
  * Layout component.
@@ -35,9 +38,12 @@ module.exports = React.createClass({
                 <head>
                     <meta charSet='utf-8' />
                     <title>{this.props.title}</title>
-                    <link rel='stylesheet'
-                          href={this.props.publicPath + '/css/style.css' + cachebust}
-                    />
+                    {
+                        config.isProduction &&
+                        <link rel='stylesheet'
+                            href={this.props.publicPath + '/css/style.css' + cachebust}
+                        />
+                    }
                 </head>
                 <body>
                     {this.props.children}

@@ -14,7 +14,7 @@ var IndexRoute = ReactRouter.IndexRoute;
  */
 module.exports = (
     <Router history={ReactRouter.browserHistory}>
-        <Route path='/' component={require('../views/Layout')}>
+        <Route path='/' component={require('../views/layout/Layout')}>
 
             {/* homepage */}
             <IndexRoute component={require('../views/Index')} />

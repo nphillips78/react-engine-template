@@ -1,0 +1,10 @@
+@import "../../src/variables";
+
+body {
+    padding: 50px;
+    font: 14px $font-stack;
+}
+
+a {
+    color: $link-color;
+}

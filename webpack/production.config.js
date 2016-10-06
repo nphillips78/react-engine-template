@@ -12,9 +12,7 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
  * https://github.com/webpack/docs/wiki/configuration
  */
 module.exports = {
-    context: path.join(__dirname, '../src'),
-
-    entry: './js/main.js',
+    entry: path.join(__dirname, '../src/main.js'),
 
     output: {
         path: path.join(__dirname, '../build'),
@@ -27,7 +25,7 @@ module.exports = {
         loaders: [
             {
                 test: /\.jsx?$/,
-                exclude: /(node_modules|bower_components)/,
+                exclude: /node_modules/,
                 loader: 'babel-loader',
                 query: {
                     presets: ['es2015', 'react']
@@ -40,8 +38,8 @@ module.exports = {
             },
 
             {
-                test: /\.css$/,
-                loader: ExtractTextPlugin.extract('css-loader?sourceMap')
+                test: /\.s?css$/,
+                loader: ExtractTextPlugin.extract('css-loader!sass-loader?sourceMap')
             }
         ]
     },
