@@ -12,7 +12,7 @@
         "*.scss",
         "*.css",
         "*.md",
-        "public"
+        "build"
     ],
     "verbose": false,
     "env": {

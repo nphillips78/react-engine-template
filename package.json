@@ -4,13 +4,15 @@
   "description": "A template for react-engine.",
   "author": "Mark <mark@remarkablemark.org>",
   "scripts": {
-    "start": "scripts/npm/start",
     "postinstall": "scripts/npm/postinstall",
+    "start": "NODE_ENV=production npm-run-all clean production:*",
+    "dev": "npm-run-all --parallel development:*",
     "clean": "rm -rf build",
-    "build": "webpack --config webpack/production.config.js",
-    "server": "node bin/www",
-    "dev": "npm run wds & nodemon bin/www",
-    "wds": "webpack-dev-server --config webpack/development.config.js"
+
+    "production:build": "webpack --config webpack/production.config.js",
+    "production:server": "node bin/www",
+    "development:server": "nodemon bin/www",
+    "development:wds": "webpack-dev-server --config webpack/development.config.js"
   },
   "dependencies": {
     "babel-core": "^6.14.0",
@@ -28,18 +30,19 @@
     "json-loader": "^0.5.4",
     "morgan": "^1.6.1",
     "node-sass": "^3.10.1",
+    "npm-run-all": "^3.1.2",
     "react": "^15.3.1",
     "react-dom": "^15.3.1",
     "react-engine": "^4.1.0",
     "react-router": "^2.8.0",
     "sass-loader": "^4.0.2",
     "serve-favicon": "^2.3.0",
-    "style-loader": "^0.13.1",
     "webpack": "^1.13.0"
   },
   "devDependencies": {
     "babel-preset-react-hmre": "^1.1.1",
     "nodemon": "^1.9.1",
+    "style-loader": "^0.13.1",
     "webpack-dev-server": "^1.14.1"
   },
   "private": true,
