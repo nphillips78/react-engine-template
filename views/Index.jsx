@@ -11,6 +11,11 @@ var Counter = require('./Counter');
  */
 module.exports = React.createClass({
     displayName: 'Index',
+
+    propTypes: {
+        title: React.PropTypes.string
+    },
+
     render: function() {
         return (
             <div>
