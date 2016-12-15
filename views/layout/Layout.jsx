@@ -14,11 +14,20 @@ if (typeof __webpack_require__ === 'function') {
 module.exports = React.createClass({
     displayName: 'Layout',
 
+    propTypes: {
+        cachebust: React.PropTypes.string,
+        children: React.PropTypes.node,
+        isProduction: React.PropTypes.bool,
+        publicPath: React.PropTypes.string,
+        title: React.PropTypes.string,
+        versions: React.PropTypes.object
+    },
+
     getDefaultProps: function() {
         return {
+            cachebust: '',
             isProduction: true,
             publicPath: '',
-            cachebust: '',
             versions: {}
         };
     },
@@ -28,11 +37,13 @@ module.exports = React.createClass({
             isProduction: this.props.isProduction,
             versions: this.props.versions
         };
+
         var cachebust = (
             this.props.isProduction ?
             '?v=' + this.props.cachebust :
             ''
         );
+
         return (
             <html>
                 <head>

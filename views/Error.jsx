@@ -12,6 +12,11 @@ var Layout = require('./layout/Layout');
 module.exports = React.createClass({
     displayName: 'Error',
 
+    propTypes: {
+        message: React.PropTypes.string,
+        error: React.PropTypes.object
+    },
+
     getDefaultProps: function() {
         return {
             message: 'Not Found',
